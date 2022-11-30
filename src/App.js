@@ -7,20 +7,25 @@
 function App() {
 
   const [ database, setDatabase ] = React.useState(data)
+  const [ score, setScore ] = React.useState(0)
 
 
   function handleClick(event, id){
-    console.log(id)
-    console.log(event)
     setDatabase(prevDatabase => {
       return prevDatabase.map ( album => {
         if(album.id === id){
-          return {...album, clicked: !album.clicked}
+          if(album.clicked === true){
+            setScore(1)
+            return {...album, clicked: true}
+          }else{
+            setScore(score+1)
+            return {...album, clicked: !album.clicked}
+          }
         }
         return album
       })
     })
-    console.log(database)
+
   }
 
   const cardCreator = database.map ( album => {
@@ -29,6 +34,7 @@ function App() {
 
   return (
     <div className="App">
+      {score}
       {cardCreator}
     </div>
   );
