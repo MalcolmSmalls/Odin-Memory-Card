@@ -15,8 +15,8 @@ function App() {
       const newArr = prevDatabase.map ( album => {
         if(album.id === id){
           if(album.clicked === true){
-            setScore(1)
-            return {...album, clicked: true}
+            setScore(0)
+            return album
           }else{
             setScore(score+1)
             return {...album, clicked: !album.clicked}
@@ -28,10 +28,9 @@ function App() {
       for(let i = 0; i < newArr.length; i++){
         let randIndex = Math.floor(Math.random() * 10)
         let val = newArr.splice(i, 1)
-        console.log(val)
         newArr.splice(randIndex, 0, val)
       }
-      console.log(newArr)
+      console.log(newArr.flat(Infinity))
       return newArr.flat(Infinity)
     })
   }
