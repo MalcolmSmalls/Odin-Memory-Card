@@ -5,21 +5,22 @@
   border-radius:20px;
   display:flex;
   justify-content:center;
-  align-items:flex-end;
+  align-items:center;
   flex-direction:column;
 }
 
 .card-container h2 {
   text-transform:uppercase;
-  font-size:20px;
+  font-size:15px;
+  text-align:center;
 }
 
-.App {
+.card-section {
   width:80%;
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-  gap:20px;
+  gap:30px;
 }
 
 .card-img-container img {
@@ -29,4 +30,12 @@
 .card-img-container {
   display:flex;
   justify-content:center;
+}
+
+.score {
+  display:block;
+}
+
+.App {
+  display:flex;
 }

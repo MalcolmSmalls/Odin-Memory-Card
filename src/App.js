@@ -12,7 +12,7 @@ function App() {
 
   function handleClick(event, id){
     setDatabase(prevDatabase => {
-      return prevDatabase.map ( album => {
+      const newArr = prevDatabase.map ( album => {
         if(album.id === id){
           if(album.clicked === true){
             setScore(1)
@@ -21,11 +21,19 @@ function App() {
             setScore(score+1)
             return {...album, clicked: !album.clicked}
           }
+        }else{
+          return album
         }
-        return album
       })
+      for(let i = 0; i < newArr.length; i++){
+        let randIndex = Math.floor(Math.random() * 10)
+        let val = newArr.splice(i, 1)
+        console.log(val)
+        newArr.splice(randIndex, 0, val)
+      }
+      console.log(newArr)
+      return newArr.flat(Infinity)
     })
-
   }
 
   const cardCreator = database.map ( album => {
@@ -34,8 +42,12 @@ function App() {
 
   return (
     <div className="App">
-      {score}
-      {cardCreator}
+      <div className ="score">
+        Current Score: {score}
+      </div>
+      <div className="card-section">
+       {cardCreator}
+      </div>
     </div>
   );
 }
